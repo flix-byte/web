@@ -1,190 +1,102 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Felix' IT-Portfolio</title>
-<style>
-  /* Reset & Basis */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background: #f0f2f5;
-    color: #222;
-  }
-  header {
-    background: #1e88e5;
-    color: white;
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-  }
-  main {
-    max-width: 900px;
-    margin: 2rem auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
-    padding: 1rem 2rem 2rem;
-  }
-  /* Tabs */
-  .tabs {
-    display: flex;
-    border-bottom: 2px solid #ddd;
-    cursor: pointer;
-  }
-  .tab {
-    flex-grow: 1;
-    text-align: center;
-    padding: 1rem 0;
-    font-weight: 600;
-    color: #555;
-    transition: background 0.3s, color 0.3s;
-  }
-  .tab:hover {
-    background: #e0e7ff;
-  }
-  .tab.active {
-    border-bottom: 4px solid #1e88e5;
-    color: #1e88e5;
-    font-weight: 700;
-    background: #f0f5ff;
-  }
-  /* Content */
-  .tab-content {
-    display: none;
-    padding: 1rem 0;
-    line-height: 1.5;
-  }
-  .tab-content.active {
-    display: block;
-  }
-  /* Blog / Projekte Styles */
-  .project-list {
-    list-style: none;
-    padding: 0;
-  }
-  .project-list li {
-    margin-bottom: 1rem;
-    border-left: 4px solid #1e88e5;
-    background: #f7faff;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-  }
-  .project-list li h3 {
-    margin: 0 0 0.3rem;
-  }
-  .project-list li p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #444;
-  }
-  /* Aufschriebe */
-  .notes {
-    background: #f9f9f9;
-    border-left: 4px solid #4caf50;
-    padding: 1rem;
-    border-radius: 4px;
-  }
-  /* Über mich */
-  .about {
-    font-size: 1rem;
-    color: #333;
-  }
-  /* Responsive */
-  @media (max-width: 600px) {
-    main {
-      margin: 1rem;
-      padding: 1rem;
-    }
-    .tabs {
-      flex-direction: column;
-    }
-    .tab {
-      border-bottom: 1px solid #ddd;
-    }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>Meine Website mit Blog</title>
+  <style>
+    /* Hier kannst du CSS reinpacken */
+  </style>
 </head>
 <body>
 
-<header>Felix' IT-Portfolio</header>
+  <!-- Navigation / Reiter-Leiste -->
+  <nav>
+    <button onclick="showTab('home')">Home</button>
+    <button onclick="showTab('projekte')">Projekte</button>
+    <button onclick="showTab('blog')">Blog</button>
+    <button onclick="showTab('about')">Über mich</button>
+  </nav>
 
-<main>
-  <div class="tabs">
-    <div class="tab active" data-tab="projects">Blog / Projekte</div>
-    <div class="tab" data-tab="notes">Aufschriebe</div>
-    <div class="tab" data-tab="about">Über mich</div>
+  <!-- Reiter Inhalte -->
+  <div id="home" class="tab">Hier kommt dein Home-Inhalt rein</div>
+  <div id="projekte" class="tab" style="display:none;">Hier deine Projekte</div>
+
+  <!-- Blog-Tab mit Blog-Liste und Detailansicht -->
+  <div id="blog" class="tab" style="display:none;">
+    <ul id="blog-list">
+      <li data-id="1" style="cursor:pointer; padding:8px; border-bottom:1px solid #ccc;">Erste Schritte mit Node.js</li>
+      <li data-id="2" style="cursor:pointer; padding:8px; border-bottom:1px solid #ccc;">Einfache Website mit HTML & CSS</li>
+      <li data-id="3" style="cursor:pointer; padding:8px;">Tipps für effektives Lernen</li>
+    </ul>
+
+    <div id="detail" style="display:none; margin-top:20px;">
+      <h2 id="detail-title"></h2>
+      <img id="detail-image" src="" alt="" style="max-width:100%; margin:10px 0;">
+      <p id="detail-text"></p>
+      <button onclick="showBlogList()">Zurück zur Übersicht</button>
+    </div>
   </div>
 
-  <section id="projects" class="tab-content active">
-    <ul class="project-list">
-      <li>
-        <h3>Website mit Firebase Login</h3>
-        <p>Moderne Web-App mit Nutzer-Authentifizierung, Darkmode und E-Mail-Bestätigung.</p>
-      </li>
-      <li>
-        <h3>Netzwerk Monitoring Tool</h3>
-        <p>Tool zur Überwachung von Servern und Netzwerkstatus in Echtzeit.</p>
-      </li>
-      <li>
-        <h3>Automatisiertes Backup-Skript</h3>
-        <p>Python-Skript, das tägliche Backups automatisiert und auf Cloud speichert.</p>
-      </li>
-    </ul>
-  </section>
+  <div id="about" class="tab" style="display:none;">Hier Infos über dich</div>
 
-  <section id="notes" class="tab-content">
-    <div class="notes">
-      <h3>Wichtige Aufschriebe</h3>
-      <ul>
-        <li>Git: Versionskontrolle ist das A und O.</li>
-        <li>Docker: Container erleichtern Entwicklung und Deployment.</li>
-        <li>Linux: Gute Kenntnisse in der Shell machen vieles einfacher.</li>
-        <li>Firebase Auth: Nutzt OAuth und sichere Methoden für Login-Systeme.</li>
-      </ul>
-    </div>
-  </section>
+  <!-- JavaScript am Ende vor </body> -->
+  <script>
+    const posts = {
+      1: {
+        title: "Erste Schritte mit Node.js",
+        image: "https://via.placeholder.com/600x200?text=Node.js",
+        text: "Node.js ist eine tolle Plattform, um JavaScript auch auf dem Server zu nutzen. Ich habe gelernt, wie man einfache Server baut und mit Daten arbeitet."
+      },
+      2: {
+        title: "Einfache Website mit HTML & CSS",
+        image: "https://via.placeholder.com/600x200?text=HTML+%26+CSS",
+        text: "Mit HTML und CSS kann man Webseiten gestalten. Ich habe gelernt, wie man Layouts baut und Farben und Schriften anpasst."
+      },
+      3: {
+        title: "Tipps für effektives Lernen",
+        image: "https://via.placeholder.com/600x200?text=Lernen",
+        text: "Beim Lernen hilft es, regelmäßig Pausen zu machen, Übungen zu machen und nicht alles auf einmal zu wollen."
+      }
+    };
 
-  <section id="about" class="tab-content">
-    <div class="about">
-      <h3>Über Felix</h3>
-      <p>Hallo, nenn mich Flix und ich mache eine Ausbildung zum Fachinformatiker für Systemintegration. Ich interessiere mich besonders für Webentwicklung, Netzwerktechnik und IT-Sicherheit.</p>
-      <p>Ich baue gerne praktische Projekte, um mein Wissen anzuwenden und mich ständig weiterzuentwickeln.</p>
-      <p>Wenn du mehr wissen willst, melde dich gern!</p>
-    </div>
-  </section>
-</main>
+    const blogList = document.getElementById('blog-list');
+    const detail = document.getElementById('detail');
+    const detailTitle = document.getElementById('detail-title');
+    const detailImage = document.getElementById('detail-image');
+    const detailText = document.getElementById('detail-text');
 
-<script>
-  const tabs = document.querySelectorAll('.tab');
-  const contents = document.querySelectorAll('.tab-content');
+    blogList.addEventListener('click', e => {
+      if(e.target.tagName === 'LI') {
+        const id = e.target.dataset.id;
+        const post = posts[id];
+        detailTitle.textContent = post.title;
+        detailImage.src = post.image;
+        detailImage.alt = post.title;
+        detailText.textContent = post.text;
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Tabs aktivieren/deaktivieren
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      // Content zeigen/verstecken
-      const target = tab.getAttribute('data-tab');
-      contents.forEach(c => {
-        if (c.id === target) {
-          c.classList.add('active');
-        } else {
-          c.classList.remove('active');
-        }
-      });
+        blogList.style.display = 'none';
+        detail.style.display = 'block';
+      }
     });
-  });
-</script>
+
+    function showBlogList() {
+      detail.style.display = 'none';
+      blogList.style.display = 'block';
+    }
+
+    function showTab(tabName) {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(t => t.style.display = 'none');
+      document.getElementById(tabName).style.display = 'block';
+
+      if(tabName === 'blog') {
+        showBlogList();
+      }
+    }
+
+    // Starte mit Home Tab
+    showTab('home');
+  </script>
 
 </body>
 </html>
-
-
-
