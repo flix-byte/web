@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meine Website mit Blog & Projekten</title>
+  <title>Meine Website mit Blog & IT Projekten</title>
   <style>
     /* Grundstyle */
     body {
@@ -138,9 +138,9 @@
 
   <div id="projekte" class="tab" style="display:none;">
     <ul id="projekte-list">
-      <li data-id="101">Website für Kundenverwaltung</li>
-      <li data-id="102">Netzwerkmonitoring Tool</li>
-      <li data-id="103">Automatisierte Backup Lösung</li>
+      <li data-id="101">Pihole Ad Blocker</li>
+      <li data-id="102">Home Assistant</li>
+      <li data-id="103">zukünftiges Projekt ;)</li>
     </ul>
 
     <div id="projekt-detail" style="display:none; margin-top:20px;">
@@ -168,7 +168,7 @@
 
   <div id="about" class="tab" style="display:none;">
     <h2>Über mich</h2>
-    <p>Hallo, ich bin Felix aus Ulm und mache eine Ausbildung als Fachinformatiker für Systemintegration.</p>
+    <p>Hallo, ich bin Felix und mache eine Ausbildung als Fachinformatiker für Systemintegration.</p>
     <p>Ich interessiere mich für IT, Programmierung und alles rund um Technik.</p>
   </div>
 
@@ -221,19 +221,26 @@
     // Projekte-Daten
     const projekte = {
       101: {
-        title: "Website für Kundenverwaltung",
-        image: "https://via.placeholder.com/600x200?text=Kundenverwaltung",
-        text: "Eine einfache Webanwendung zur Verwaltung von Kundenkontakten, inklusive Suche und Filter."
+        title: "DNS-Server Pi-Hole",
+        image: "https://upload.wikimedia.org/wikipedia/en/1/15/Pi-hole_vector_logo.svg",
+        text: `
+        <p>Pi-hole ist ein DNS-basierter Werbeblocker, der Werbung und Tracker direkt im Netzwerk filtert.</p>
+        <p>Er wird meist auf einem Raspberry Pi oder Server installiert und dient als DNS-Server für alle Geräte im Heimnetzwerk.</p>
+        <p>Es können gefährliche Domains blockiert werden, ohne dass auf jedem Gerät eine Software installiert werden muss.</p>
+        <p>Pi-hole verbessert die Privatsphäre, erhöht die Netzwerksicherheit und sorgt für eine schnellere und sauberere Internet-Erfahrung.</p>
+
+      `
+    
       },
       102: {
-        title: "Netzwerkmonitoring Tool",
-        image: "https://via.placeholder.com/600x200?text=Netzwerkmonitoring",
-        text: "Tool zur Überwachung von Netzwerkgeräten, mit Alarmfunktion und Echtzeit-Dashboard."
+        title: "Home Assistant",
+        image: "https://upload.wikimedia.org/wikipedia/commons/a/ab/New_Home_Assistant_logo.svg",
+        text: "Open-Source Home Automatisierung auf dem Raspi 5"
       },
       103: {
-        title: "Automatisierte Backup Lösung",
+        title: "Zukünftiges Projekt",
         image: "https://via.placeholder.com/600x200?text=Backup+Lösung",
-        text: "Script-basierte Lösung, die automatisch Backups von wichtigen Dateien und Datenbanken erstellt."
+        text: "Hier wird ein Projekt folgen"
       }
     };
 
