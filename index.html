@@ -1,25 +1,190 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Felix – IT & Projekte</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 2rem;
-      color: #333;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Felix' IT-Portfolio</title>
+<style>
+  /* Reset & Basis */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+    background: #f0f2f5;
+    color: #222;
+  }
+  header {
+    background: #1e88e5;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    padding: 1rem 2rem 2rem;
+  }
+  /* Tabs */
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    cursor: pointer;
+  }
+  .tab {
+    flex-grow: 1;
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: 600;
+    color: #555;
+    transition: background 0.3s, color 0.3s;
+  }
+  .tab:hover {
+    background: #e0e7ff;
+  }
+  .tab.active {
+    border-bottom: 4px solid #1e88e5;
+    color: #1e88e5;
+    font-weight: 700;
+    background: #f0f5ff;
+  }
+  /* Content */
+  .tab-content {
+    display: none;
+    padding: 1rem 0;
+    line-height: 1.5;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  /* Blog / Projekte Styles */
+  .project-list {
+    list-style: none;
+    padding: 0;
+  }
+  .project-list li {
+    margin-bottom: 1rem;
+    border-left: 4px solid #1e88e5;
+    background: #f7faff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+  .project-list li h3 {
+    margin: 0 0 0.3rem;
+  }
+  .project-list li p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #444;
+  }
+  /* Aufschriebe */
+  .notes {
+    background: #f9f9f9;
+    border-left: 4px solid #4caf50;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  /* Über mich */
+  .about {
+    font-size: 1rem;
+    color: #333;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    main {
+      margin: 1rem;
+      padding: 1rem;
     }
-    h1 {
-      color: #0066cc;
+    .tabs {
+      flex-direction: column;
     }
-  </style>
+    .tab {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+</style>
 </head>
 <body>
-  <h1>Hi, ich bin flix 👋</h1>
-  <p>Ich mache eine Ausbildung zum Fachinformatiker für Systemintegration.</p>
-  <p>Hier zeige ich meine IT-Projekte, Tools und Erfahrungen.</p>
+
+<header>Felix' IT-Portfolio</header>
+
+<main>
+  <div class="tabs">
+    <div class="tab active" data-tab="projects">Blog / Projekte</div>
+    <div class="tab" data-tab="notes">Aufschriebe</div>
+    <div class="tab" data-tab="about">Über mich</div>
+  </div>
+
+  <section id="projects" class="tab-content active">
+    <ul class="project-list">
+      <li>
+        <h3>Website mit Firebase Login</h3>
+        <p>Moderne Web-App mit Nutzer-Authentifizierung, Darkmode und E-Mail-Bestätigung.</p>
+      </li>
+      <li>
+        <h3>Netzwerk Monitoring Tool</h3>
+        <p>Tool zur Überwachung von Servern und Netzwerkstatus in Echtzeit.</p>
+      </li>
+      <li>
+        <h3>Automatisiertes Backup-Skript</h3>
+        <p>Python-Skript, das tägliche Backups automatisiert und auf Cloud speichert.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="notes" class="tab-content">
+    <div class="notes">
+      <h3>Wichtige Aufschriebe</h3>
+      <ul>
+        <li>Git: Versionskontrolle ist das A und O.</li>
+        <li>Docker: Container erleichtern Entwicklung und Deployment.</li>
+        <li>Linux: Gute Kenntnisse in der Shell machen vieles einfacher.</li>
+        <li>Firebase Auth: Nutzt OAuth und sichere Methoden für Login-Systeme.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" class="tab-content">
+    <div class="about">
+      <h3>Über Felix</h3>
+      <p>Hallo, nenn mich Flix und ich mache eine Ausbildung zum Fachinformatiker für Systemintegration. Ich interessiere mich besonders für Webentwicklung, Netzwerktechnik und IT-Sicherheit.</p>
+      <p>Ich baue gerne praktische Projekte, um mein Wissen anzuwenden und mich ständig weiterzuentwickeln.</p>
+      <p>Wenn du mehr wissen willst, melde dich gern!</p>
+    </div>
+  </section>
+</main>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Tabs aktivieren/deaktivieren
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Content zeigen/verstecken
+      const target = tab.getAttribute('data-tab');
+      contents.forEach(c => {
+        if (c.id === target) {
+          c.classList.add('active');
+        } else {
+          c.classList.remove('active');
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
+
 
 
